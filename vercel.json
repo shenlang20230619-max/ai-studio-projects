@@ -1,0 +1,18 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "version": 2,
+  "name": "ai-studio-projects",
+  "public": true,
+  "builds": [
+    {
+      "src": "**/*",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    { "src": "/ai-engineer/(.*)", "dest": "/1-ai-engineer-analysis/$1" },
+    { "src": "/ai-workbench/(.*)", "dest": "/2-ai-workbench/$1" },
+    { "src": "/agent-infra/(.*)", "dest": "/3-agent-infra/$1" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}
