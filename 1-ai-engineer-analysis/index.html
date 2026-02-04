@@ -8,10 +8,29 @@
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <link rel="dns-prefetch" href="//fonts.loli.net">
     <link rel="preconnect" href="https://fonts.loli.net" crossorigin>
-    <link rel="preload" href="styles.min.css" as="style">
+    <!-- 关键首屏CSS内联 -->
+    <style>
+        :root{--primary-color:#667eea;--bg-color:#F8FAFC;--bg-dark:#0f172a;--text-primary:#111827;--text-secondary:#64748B;--shadow-md:0 4px 12px rgba(0,0,0,.08);--radius-lg:14px}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background-color:var(--bg-color);color:var(--text-primary);line-height:1.7}
+        .top-nav{background:#fff;border-bottom:1px solid #e2e8f0;padding:10px 20px;position:sticky;top:0;z-index:100}
+        .nav-container{max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+        .nav-back{color:var(--primary-color);text-decoration:none;font-weight:500;font-size:.9rem}
+        .nav-title{font-weight:600;color:var(--text-primary);font-size:.95rem}
+        .header{background:linear-gradient(135deg,#0f172a 0,#1e293b 50%,#334155 100%);color:#fff;padding:32px 20px;text-align:center;position:relative;overflow:hidden}
+        .header h1{font-size:1.8rem;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#fff,#e0e7ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .subtitle{font-size:.9rem;color:rgba(255,255,255,.85);max-width:600px;margin:0 auto}
+        .stats-section{background:linear-gradient(180deg,#fff 0,var(--bg-color) 100%);padding:28px 20px}
+        .stats-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+        .stat-card{background:#fff;border-radius:var(--radius-lg);padding:18px;display:flex;align-items:center;gap:14px;box-shadow:var(--shadow-md)}
+        .stat-icon{font-size:2rem}.stat-number{font-size:2rem;font-weight:800}.stat-label{font-size:.88rem;font-weight:600;margin-top:4px}
+        @media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+    </style>
+    <!-- 异步加载完整CSS -->
+    <link rel="preload" href="styles.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="styles.min.css"></noscript>
     <link href="https://fonts.loli.net/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.loli.net/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-    <link rel="stylesheet" href="styles.min.css">
 </head>
 <body>
     <!-- 统一导航栏 -->
@@ -690,7 +709,7 @@
         </div>
     </footer>
 
-    <script src="network-graph.js"></script>
-    <script src="main.js"></script>
+    <script src="network-graph.min.js" defer></script>
+    <script src="main.min.js" defer></script>
 </body>
 </html>
